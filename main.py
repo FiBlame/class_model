@@ -41,11 +41,41 @@ class Employee:
         else:
             return False
 
+###################NA4ALNIK#######################
+class Department:
+    def __init__(self, title, chief=None, employees=None):
+        self.title = title
+        if employees is None:
+            employees = list()
+        self.employees = employees
+        self.chief = chief
+
+    def append (self, emp):
+        self.employees.append(emp)
+
+    def __str__(self):
+        return f"Отдел: {self.title}, начальник: ,{self.chief} кол-во сотрудников: {len(self.employees)}"
+
+    def print_employees(self):
+        for emp in self.employees:
+            print(emp)
+
+    def print_employees_on_leave(self, status=True):
+        for emp in self.employees:
+            if emp.on_leave == status:
+                print(emp)
+
+
+
 kowka = Employee (1, "Kowka K.S", "13.12.1313", 666)
-kisja = Employee (2, "Kisja K.I", "13.12.1314", 999)
+kisja = Employee (2, "Kisja K.I", "15.12.1314", 999, True)
+foxy = Employee (3, "Foxy N.T", "14.12.1315", 6969, True)
 print(kisja == kowka)
 print(kisja >= kowka)
 print(kisja > kowka)
 
 
-
+arhive = Department("Архив", employees=[kowka])
+arhive.append(kisja)
+arhive.append(foxy)
+arhive.print_employees_on_leave(False)
